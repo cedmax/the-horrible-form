@@ -52,7 +52,11 @@ const TickMark = () => (
 
 export default memo(({ submitted, onClick }) => {
   return (
-    <Button onClick={onClick} className={submitted ? 'circle' : ''}>
+    <Button
+      tabIndex={0}
+      onClick={onClick}
+      className={submitted ? 'circle' : ''}
+    >
       <div>{submitted ? <TickMark /> : 'Submit'}</div>
     </Button>
   );
