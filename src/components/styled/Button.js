@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.div`
@@ -52,10 +52,24 @@ const TickMark = () => (
 );
 
 export default memo(({ submitted, onClick }) => {
+  const submit = useCallback(() => {
+    !submitted && onClick();
+  }, [onClick, submitted]);
+
+  const onKey = useCallback(
+    e => {
+      if ([13].includes(e.keyCode)) {
+        submit();
+      }
+    },
+    [submit]
+  );
+
   return (
     <Button
       tabIndex={0}
-      onClick={submitted ? () => {} : onClick}
+      onClick={submit}
+      onKeyUp={onKey}
       className={submitted ? 'circle' : ''}
     >
       <div>{submitted ? <TickMark /> : 'Submit'}</div>
