@@ -31,5 +31,22 @@ export default ({ selected, onChange, label }) => {
     onChange(!selected);
   }, [onChange, selected]);
 
-  return <Checkbox selected={selected} onClick={onClick} label={label} />;
+  const onKey = useCallback(
+    e => {
+      if ([13, 32].includes(e.keyCode)) {
+        onClick(e);
+      }
+    },
+    [onClick]
+  );
+
+  return (
+    <Checkbox
+      onKeyUp={onKey}
+      tabIndex={0}
+      selected={selected}
+      onClick={onClick}
+      label={label}
+    />
+  );
 };

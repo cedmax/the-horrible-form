@@ -55,7 +55,7 @@ const Radio = styled.div`
     display: block;
     position: absolute;
     margin-left: 30px;
-    content: attr(option);
+    content: attr(data-option);
     white-space: pre;
   }
 `;
@@ -63,10 +63,19 @@ const Radio = styled.div`
 export default ({ value, options, label, onChange }) => {
   const onClick = useCallback(
     e => {
-      const value = e.target.getAttribute('option');
+      const value = e.target.getAttribute('data-option');
       onChange(value);
     },
     [onChange]
+  );
+
+  const onKey = useCallback(
+    e => {
+      if ([13, 32].includes(e.keyCode)) {
+        onClick(e);
+      }
+    },
+    [onClick]
   );
 
   return (
@@ -74,7 +83,9 @@ export default ({ value, options, label, onChange }) => {
       <div>
         {options.map(option => (
           <Radio
-            option={option}
+            tabIndex={0}
+            onKeyUp={onKey}
+            data-option={option}
             onClick={onClick}
             key={option}
             selected={option === value}
