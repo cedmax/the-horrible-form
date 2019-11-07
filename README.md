@@ -1,16 +1,11 @@
-"Your challenge is to produce the worst user interface you can think of. Bonus points if the your solution actually works."
+> Your challenge is to produce the worst user interface you can think of.
+> Bonus points if the your solution actually works.
 
-I couldn't think anything worse than a form in which every element is a div.
+I couldn't think anything worse than a form in which every element is a div\* but everything seems to be working just fine.
 
-## Available Scripts
+Install deps: `yarn`<br/>
+Dev mode: `yarn start`<br/>
+Build: `yarn build`<br/>
 
-In the project directory, you can run:
 
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.
+\* the title and the gender inputs are like that for extra awfulness.
