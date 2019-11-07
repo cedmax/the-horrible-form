@@ -42,11 +42,6 @@ const Select = styled.div`
     align-items: center;
   }
 
-  span {  
-    padding: 10px;
-    width: 100%;
-  }
-
   display: inline-flex;
   border: 1px solid #ccc;
   height: 30px;
@@ -60,6 +55,11 @@ const Select = styled.div`
   ${OptionList} {
     display: ${props => (props.isOpen ? 'block' : 'none')}
   }
+`;
+
+const SelectText = styled.div`
+  padding: 10px;
+  width: 100%;
 `;
 
 const Option = styled.div`
@@ -136,7 +136,7 @@ export default memo(({ label, options, value, onChange }) => {
       value={value}
       onClick={toggleIsOpen}
     >
-      <span tabIndex={0}>{value || ' '}</span>
+      <SelectText tabIndex={0}>{value || ' '}</SelectText>
       <OptionList>
         {options.map((option, i) => (
           <Option
