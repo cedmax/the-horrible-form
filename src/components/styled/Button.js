@@ -30,6 +30,7 @@ const Button = styled.div`
     background: mediumseagreen;
     border-radius: 50%;
     transform: rotate(-180deg);
+    cursor: default;
   }
 
   div {
@@ -54,7 +55,7 @@ export default memo(({ submitted, onClick }) => {
   return (
     <Button
       tabIndex={0}
-      onClick={onClick}
+      onClick={submitted ? () => {} : onClick}
       className={submitted ? 'circle' : ''}
     >
       <div>{submitted ? <TickMark /> : 'Submit'}</div>
