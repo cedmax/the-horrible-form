@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import styled from 'styled-components';
 
 const Checkbox = styled.div`
@@ -26,7 +26,7 @@ const Checkbox = styled.div`
   }
 `;
 
-export default ({ selected, onChange, label }) => {
+export default memo(({ selected, onChange, label }) => {
   const onClick = useCallback(() => {
     onChange(!selected);
   }, [onChange, selected]);
@@ -49,4 +49,4 @@ export default ({ selected, onChange, label }) => {
       label={label}
     />
   );
-};
+});

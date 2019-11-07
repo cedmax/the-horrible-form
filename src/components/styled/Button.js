@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.div`
@@ -50,10 +50,10 @@ const TickMark = () => (
   </svg>
 );
 
-export default ({ submitted, onClick }) => {
+export default memo(({ submitted, onClick }) => {
   return (
     <Button onClick={onClick} className={submitted ? 'circle' : ''}>
       <div>{submitted ? <TickMark /> : 'Submit'}</div>
     </Button>
   );
-};
+});

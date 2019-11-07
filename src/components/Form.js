@@ -4,6 +4,9 @@ import Input from './styled/Input';
 import Radio from './styled/Radio';
 import Checkbox from './styled/Checkbox';
 import Button from './styled/Button';
+
+const genderOptions = ['male', 'female', 'prefer not to share'];
+
 export default () => {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState(null);
@@ -49,7 +52,7 @@ export default () => {
         label="Gender"
         value={gender}
         onChange={setGender}
-        options={['male', 'female', 'prefer not to share']}
+        options={genderOptions}
       />
       <Input
         label="Username"

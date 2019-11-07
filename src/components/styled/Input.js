@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, memo } from 'react';
 import styled from 'styled-components';
 
 const fieldWitdh = 300;
@@ -40,7 +40,7 @@ const Input = styled.div`
   }
 `;
 
-export default ({ label, value, placeHolder, onChange = () => {} }) => {
+export default memo(({ label, value, placeHolder, onChange = () => {} }) => {
   const input = useRef();
   const callback = useCallback(
     e => {
@@ -62,4 +62,4 @@ export default ({ label, value, placeHolder, onChange = () => {} }) => {
       placeHolder={placeHolder}
     ></Input>
   );
-};
+});

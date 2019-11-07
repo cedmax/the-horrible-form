@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import styled from 'styled-components';
 
 const fieldWitdh = 300;
@@ -29,7 +29,7 @@ const RadioGroup = styled.div`
   }
 `;
 
-const Radio = styled.div`
+const Radio = memo(styled.div`
   width: 18px;
   height: 18px;
   line-height: 16px;
@@ -58,9 +58,9 @@ const Radio = styled.div`
     content: attr(data-option);
     white-space: pre;
   }
-`;
+`);
 
-export default ({ value, options, label, onChange }) => {
+export default memo(({ value, options, label, onChange }) => {
   const onClick = useCallback(
     e => {
       const value = e.target.getAttribute('data-option');
@@ -94,4 +94,4 @@ export default ({ value, options, label, onChange }) => {
       </div>
     </RadioGroup>
   );
-};
+});
