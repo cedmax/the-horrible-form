@@ -2,13 +2,16 @@ import React, { useState, useCallback } from 'react';
 import Form from './styled/Form';
 import Input from './styled/Input';
 import Radio from './styled/Radio';
+import Select from './styled/Select';
 import Checkbox from './styled/Checkbox';
 import Button from './styled/Button';
 
+const titleOptions = ['Mr', 'Mrs', 'Miss'];
 const genderOptions = ['male', 'female', 'prefer not to share'];
 
 export default () => {
   const [submitted, setSubmitted] = useState(false);
+  const [title, setTitle] = useState(null);
   const [name, setName] = useState(null);
   const [familyName, setFamilyName] = useState(null);
   const [gender, setGender] = useState(null);
@@ -36,6 +39,12 @@ export default () => {
 
   return (
     <Form>
+      <Select
+        label="Title"
+        options={titleOptions}
+        value={title}
+        onChange={setTitle}
+      />
       <Input
         label="Name"
         value={name}
