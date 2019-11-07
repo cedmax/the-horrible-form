@@ -6,7 +6,7 @@ const Checkbox = styled.div`
     display: ${props => (props.selected ? 'block' : 'none')};
     position: absolute;
     content: '✓';
-
+    cursor: pointer;
   }
 
   display: inline-flex;

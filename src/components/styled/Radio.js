@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const fieldWitdh = 300;
 const labelWidth = 150;
 
-const RadioGroup = styled.div`
+const RadioGroup = memo(styled.div`
   ::before {
     content: '${props => props.label}';
     display: inline-flex;
@@ -12,6 +12,7 @@ const RadioGroup = styled.div`
     line-height: .7;
     vertical-align: top;
     position: absolute;
+    cursor: pointer;
     margin-left: -${labelWidth - 10}px;
     color: black
   }
@@ -27,7 +28,7 @@ const RadioGroup = styled.div`
     display: flex;
     flex-direction: column;
   }
-`;
+`);
 
 const Radio = memo(styled.div`
   width: 18px;

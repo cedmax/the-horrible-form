@@ -10,6 +10,7 @@ const Input = styled.div`
     display: inline-flex;
     height: 30px;
     line-height: .7;
+    cursor: pointer;
     vertical-align: top;
     position: absolute;
     margin-left: -${labelWidth}px;
