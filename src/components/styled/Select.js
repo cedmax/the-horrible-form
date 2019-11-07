@@ -60,6 +60,11 @@ const Select = styled.div`
 const SelectText = styled.div`
   padding: 10px;
   width: 100%;
+
+  ::before {
+    content: attr(data-value);
+    display: block;
+  }
 `;
 
 const Option = styled.div`
@@ -71,6 +76,11 @@ const Option = styled.div`
 
   :hover {
     background: #fafafa;
+  }
+
+  ::before {
+    content: attr(data-option);
+    display: block;
   }
 `;
 
@@ -89,7 +99,10 @@ export default memo(({ label, options, value, onChange }) => {
     setIsOpen,
   ]);
 
-  const onSelect = useCallback(e => onChange(e.target.innerText), [onChange]);
+  const onSelect = useCallback(
+    e => onChange(e.target.getAttribute('data-option')),
+    [onChange]
+  );
 
   const onSelectKey = useCallback(
     e => {
@@ -112,7 +125,7 @@ export default memo(({ label, options, value, onChange }) => {
   const onOptionKey = useCallback(
     e => {
       if ([13, 38].includes(e.keyCode)) {
-        const value = e.target.innerText;
+        const value = e.target.getAttribute('data-option');
         onChange(value);
       }
       if ([40, 38].includes(e.keyCode)) {
@@ -136,7 +149,7 @@ export default memo(({ label, options, value, onChange }) => {
       value={value}
       onClick={toggleIsOpen}
     >
-      <SelectText tabIndex={0}>{value || ' '}</SelectText>
+      <SelectText tabIndex={0} data-value={value} />
       <OptionList>
         {options.map((option, i) => (
           <Option
@@ -145,9 +158,8 @@ export default memo(({ label, options, value, onChange }) => {
             ref={optionsRefs[i]}
             onClick={onSelect}
             key={option}
-          >
-            {option}
-          </Option>
+            data-option={option}
+          />
         ))}
       </OptionList>
     </Select>
