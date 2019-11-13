@@ -1,13 +1,13 @@
-import React, { useState, useCallback } from 'react';
-import Form from './styled/Form';
-import Input from './styled/Input';
-import Radio from './styled/Radio';
-import Select from './styled/Select';
-import Checkbox from './styled/Checkbox';
-import Button from './styled/Button';
+import React, { useState, useCallback } from "react";
+import Form from "./styled/Form";
+import Input from "./styled/Input";
+import Radio from "./styled/Radio";
+import Select from "./styled/Select";
+import Checkbox from "./styled/Checkbox";
+import Button from "./styled/Button";
 
-const titleOptions = ['Mr', 'Mrs', 'Miss'];
-const genderOptions = ['male', 'female', 'prefer not to share'];
+const titleOptions = ["Mr", "Mrs", "Miss"];
+const genderOptions = ["male", "female", "prefer not to share"];
 
 export default () => {
   const [submitted, setSubmitted] = useState(false);
@@ -22,7 +22,7 @@ export default () => {
 
   const onPasswordChange = useCallback(password => {
     setPrivatePassword(password);
-    setPassword(password.replace(/./gi, '*'));
+    setPassword(password.replace(/./gi, "*"));
   }, []);
 
   const submit = useCallback(() => {
@@ -32,13 +32,25 @@ export default () => {
       gender,
       userName,
       privatePassword,
-      newsLetter,
+      newsLetter
     });
     setSubmitted(true);
   }, [name, familyName, gender, userName, privatePassword, newsLetter]);
 
   return (
     <Form>
+      <div>
+        Welcome to The Horrible Form. This is a "awful UI" experiment,{" "}
+        <a
+          href="https://github.com/cedmax/the-horrible-form"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          read more about it
+        </a>
+        .
+      </div>
+      <br />
       <Select
         label="Title"
         options={titleOptions}
